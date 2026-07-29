@@ -1,5 +1,5 @@
 # 🛒 Grocery Sales Analytics
-**SQL Business Analysis | Microsoft SQL Server · T-SQL · Data Analytics**
+**SQL Business Analysis | Microsoft SQL Server · Data Analytics**
 
 ---
 
@@ -24,7 +24,6 @@ This project rebuilds that visibility from the ground up: a Kaggle grocery sales
 | Tool | Purpose |
 |------|---------|
 | Microsoft SQL Server | Relational database, data cleaning, T-SQL analysis |
-| T-SQL | Business-question queries, joins, window functions, CTEs |
 | Kaggle | Source dataset (7 relational CSV files) |
 
 ---
@@ -32,22 +31,21 @@ This project rebuilds that visibility from the ground up: a Kaggle grocery sales
 ## 📂 Repository Structure
 
 ```
-grocery-sales-analytics/
+GrocerStore_Analytics/
 │
+├── assets/
+│   └──  ER Diagram.png                   # Database relationship diagram
+|
 ├── data/
 │   ├── categories.csv
 │   ├── cities.csv
 │   ├── countries.csv
 │   ├── customers.csv
 │   ├── employees.csv
-│   ├── products.csv
-│   └── sales.csv
+│   └── products.csv
 │
 ├── sql/
-│   └── grocery_sales_analysis.sql       # All 13 business-question queries
-│
-├── assets/
-│   └──  er_diagram.png                   # Database relationship diagram
+│   └── Grocery Sales Data.sql       # All 13 business-question queries
 │
 └── README.md
 ```
@@ -58,10 +56,10 @@ grocery-sales-analytics/
 
 | KPI | Value |
 |-----|-------|
-| 💰 Total Revenue | $957.88M |
-| 🧾 Total Orders | 1.45M |
-| 📦 Total Quantity Sold | 18.86M |
-| 🛍️ Average Order Value (AOV) | $659.98 |
+| 💰 Total Revenue | $4.42B |
+| 🧾 Total Orders | 6.69M |
+| 📦 Total Quantity Sold | 8.70B |
+| 🛍️ Average Order Value (AOV) | $660.88 |
 
 ---
 
@@ -91,7 +89,7 @@ Phase 5 → Insights & Recommendations
 
 Tables were connected into a relational model linking sales, products, categories, customers, cities, countries, and employees — giving every query a single, consistent source of truth to join against.
 
-![ER Diagram](assets/er_diagram.png)
+![ER Diagram](assets/ER Diagram.png)
 
 **Core relationships:**
 - `sales` is the central fact table, linking to `customers`, `products`, and `employees`
