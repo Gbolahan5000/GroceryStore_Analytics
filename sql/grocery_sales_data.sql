@@ -3,7 +3,7 @@
 
 SELECT 
 	DATENAME(MONTH, s.SalesDate) AS SalesMonth,
-	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalSales
+	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalRevenue
 FROM sales s
 JOIN products p
 ON s.ProductID = p.ProductID
@@ -18,7 +18,7 @@ ORDER BY
 SELECT 
 	DATENAME(MONTH, s.SalesDate) AS SalesMonth,
 	c.CategoryName AS CategoryName,
-	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalSales
+	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalRevenue
 FROM sales s
 JOIN products p
 	ON s.ProductID = p.ProductID
@@ -189,12 +189,11 @@ WHERE TotalSales = (SELECT MIN(TotalSales) FROM SalesPerEmployee);
 
 
 
--- 12. Map sales data to specific cities and countries to identify high performing regions
+-- 12. Map sales data to specific cities to identify high performing regions
 
 SELECT
 	ci.CityName,
-	co.CountryName,
-	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalSales
+	ROUND(SUM(s.Quantity * p.Price), 2) AS TotalRevenue
 FROM sales s
 JOIN products p
 	ON s.ProductID = p.ProductID
@@ -202,11 +201,10 @@ JOIN customers cu
 	ON s.CustomerID = cu.CustomerID
 JOIN cities ci
 	ON cu.CityID = ci.CityID
-JOIN countries co
-	ON ci.CountryID = co.CountryID
 GROUP BY
-	ci.CityName,
-	co.CountryName;
+	ci.CityName
+ORDER BY 
+	TotalRevenue DESC;
 
 -- 13. Compare sales volume between various geographical areas
 
