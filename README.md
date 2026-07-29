@@ -34,7 +34,7 @@ This project rebuilds that visibility from the ground up: a Kaggle grocery sales
 GrocerStore_Analytics/
 │
 ├── assets/
-│   └──  ER Diagram.png                   # Database relationship diagram
+│   └──  er_diagram.png                   # Database relationship diagram
 |
 ├── data/
 │   ├── categories.csv
@@ -45,7 +45,7 @@ GrocerStore_Analytics/
 │   └── products.csv
 │
 ├── sql/
-│   └── Grocery Sales Data.sql       # All 13 business-question queries
+│   └── grocery_sales_data.sql       # All 13 business-question queries
 │
 └── README.md
 ```
@@ -89,7 +89,7 @@ Phase 5 → Insights & Recommendations
 
 Tables were connected into a relational model linking sales, products, categories, customers, cities, countries, and employees — giving every query a single, consistent source of truth to join against.
 
-![ER Diagram](assets/ER Diagram.png)
+![ER Diagram](assets/er_diagram.png)
 
 **Core relationships:**
 - `sales` is the central fact table, linking to `customers`, `products`, and `employees`
@@ -100,7 +100,7 @@ Tables were connected into a relational model linking sales, products, categorie
 
 ## 💻 Phase 4: SQL Analysis — 13 Business Questions
 
-All queries live in [`sql/grocery_sales_analysis.sql`](sql/grocery_sales_analysis.sql). They're grouped into five analysis areas:
+All queries live in [`sql/grocery_sales_data.sql`](sql/grocery_sales_data.sql). They're grouped into five analysis areas:
 
 ### 1. Monthly Sales Performance
 - Total revenue generated per month
@@ -137,16 +137,16 @@ JOIN products p ON s.ProductID = p.ProductID;
 ```
 ---
 
-**Top revenue-generating cities (February view):**
+**Top revenue-generating cities:**
 
 | City | Total Revenue |
 |------|---------------|
-| Sacramento | $1,610,336.40 |
-| Fort Wayne | $1,528,188.42 |
-| Columbus | $1,501,819.23 |
-| San Antonio | $1,393,982.04 |
-| Phoenix | $1,390,517.55 |
-| Jackson | $1,016,501.45 |
+| Tucson | $49,840,828.82 |
+| Jackson | $49,414,193.71 |
+| Sacramento | $49,185,495.86 |
+| Fort Wayne | $48,674,864.78 |
+| Indianapolis | $48,377,551.82 |
+| Columbus | $48,322,272.43 |
 
 ---
 
@@ -157,16 +157,14 @@ JOIN products p ON s.ProductID = p.ProductID;
 | # | Insight |
 |---|---------|
 | 1 | Every customer in the dataset is a repeat buyer — there are no one-time purchasers, suggesting strong existing customer retention |
-| 2 | Sacramento, Fort Wayne, and Columbus lead city-level revenue, with a noticeable gap down to lower-performing cities like Jackson |
-| 3 | [Insert top product / category finding here — e.g. top-revenue product and its share of total sales] |
-| 4 | [Insert salesperson performance spread — e.g. gap between top and lowest performer] |
-| 5 | Monthly and category-level revenue trends are tracked consistently, giving a repeatable basis for spotting seasonal shifts |
+| 2 | Tucson, Jackson, and Sacramento lead city-level revenue, with a noticeable gap down to lower-performing cities |
+| 3 | Monthly and category-level revenue trends are tracked consistently, giving a repeatable basis for spotting seasonal shifts |
 
 ### Recommendations
 
 | # | Recommendation | Business Impact |
 |---|---------------|----------------|
-| 1 | Investigate why lower-performing cities (e.g. Jackson) lag the top cluster | Identify whether it's a demand, pricing, or staffing gap |
+| 1 | Investigate why lower-performing cities lag the top cluster | Identify whether it's a demand, pricing, or staffing gap |
 | 2 | Use the repeat-buyer finding to prioritize retention/loyalty programs over acquisition spend | Focus budget where it already converts |
 | 3 | Track salesperson performance monthly rather than only in aggregate | Catch underperformance early and replicate what top performers do |
 | 4 | Complete the regional sales-strategy effectiveness query | Move from "where sales happen" to "why they happen there" |
@@ -183,17 +181,3 @@ JOIN products p ON s.ProductID = p.ProductID;
 
 ---
 
-## 📄 Deliverables
-
-| Deliverable | Description |
-|-------------|-------------|
-| `grocery_sales_analysis.sql` | All 13 SQL queries answering the business questions |
-| `data/*.csv` | Source dataset (7 relational tables) |
-| `README.md` | Full project documentation |
-
----
-
-
-## 🏷️ Tags
-
-`#SQL` `#SQLServer` `#DataAnalytics` `#DataAnalyst` `#DataDrivenDecisions` `#RetailAnalytics`
